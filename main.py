@@ -65,3 +65,4 @@ for p in planList:
     if names != '':
         print(names)
         msg = f'课程：{p['courseName']}<br> 未完成的人员：{names}'
+        sendMail(msg)
