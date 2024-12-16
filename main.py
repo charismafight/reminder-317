@@ -26,7 +26,6 @@ def sendMail(msg):
         message['From'] = Header('L<ll@champath.cn>')
         message['Subject'] = Header('来自hospital.317hu.com的课程完成情况提醒', 'utf-8')
         s.sendmail("ll@champath.cn", dest, message.as_string())
-        s.quit()
 
 
 # login
@@ -51,7 +50,6 @@ plansData = json.loads(plans.text)
 
 if len(plansData['data']['result']) == 0:
     print('no plan results')
-    quit()
 else:
     print('fetch succeed')
 # structure of plans:
@@ -64,5 +62,5 @@ for p in planList:
     names = fetchUndoneNames(p['id'], c)
     if names != '':
         print(names)
-        msg = f'课程：{p['courseName']}<br> 未完成的人员：{names}'
+        msg = f'课程：'+{p['courseName']} + f'<br> 未完成的人员：{names}'
         sendMail(msg)
