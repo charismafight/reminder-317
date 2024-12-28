@@ -58,9 +58,10 @@ else:
 planList = plansData['data']['result']
 
 for p in planList:
-    # print(p['id'], p['courseName'])
     names = fetchUndoneNames(p['id'], c)
     if names != '':
-        print(names)
-        msg = f'课程：'+{p['courseName']} + f'<br> 未完成的人员：{names}'
+        msg = '课程：' + p['courseName'] + f'------未完成的人员：{names}'
+        sendMail(msg)
+    else:
+        msg = '课程：' + p['courseName'] + f'------所有参与人员都已经完成'
         sendMail(msg)
